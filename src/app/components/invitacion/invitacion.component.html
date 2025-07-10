@@ -1,0 +1,119 @@
+<div class="container_general">
+  <!-- portada clicable -->
+  <div
+    class="cover"
+    [class.open]="isOpen"
+     [class.closing]="isClosing"
+    (click)="onNextPage()"
+  >
+    <div class="panel left">
+      <div class="ribbon horizontal half-left"></div>
+    </div>
+    <div class="panel right">
+      <div class="ribbon horizontal half-right"></div>
+    </div>
+    <div class="seal">
+      <img src="COMPONENTE.png" alt="Monograma CA" />
+    </div>
+  </div>
+
+  <!-- bordes interiores -->
+  <div class="border top"></div>
+  <div class="border right"></div>
+  <div class="border bottom"></div>
+  <div class="border left"></div>
+
+  <!-- contenedor de páginas -->
+  <div #invitationContent class="invitation-content">
+    <section class="page hero">
+      <img src="PALOMAS_BODA.png" alt="Fondo palomas" />
+      <div class="novios">
+        <img src="NOVIOS.jpg" alt="Novios" />
+        <div class="hero-text">
+          <h2>NUESTRA BODA</h2>
+          <p class="couple">Carolina &amp; Antonio</p>
+          <p class="date">9 . 08 . 25</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page">
+      <h1>💕La historia <br/>continúa💕</h1>
+      <div class="seal_novios">
+        <img src="IMAGEN.png" alt="Sello novios" />
+      </div>
+      <h2>NUESTROS PADRES</h2>
+      <div class="container_padres">
+        <div class="container_pareja">
+          <img src="Novio.png" alt="Padre novio" />
+          <div class="barrita"></div>
+        </div>
+        <div class="container_nombres">
+          <p>Sergio Cuevas<br/>Y<br/>Rosa Cuevas</p>
+        </div>
+      </div>
+      <div class="container_padres">
+        <div class="container_nombres">
+          <p>Juan Valadez<br/>Y<br/>Imelda Vargas</p>
+        </div>
+        <div class="container_pareja">
+          <div class="barrita"></div>
+          <img src="Novia.png" alt="Madre novia" />
+        </div>
+      </div>
+    </section>
+
+  <section class="page padrinos_page">
+    <div class="padrinos-inner">
+      <div class="icon-cruz">
+        <img src="CRUZ_PAREJA.png" alt="Cruz padrinos">
+      </div>
+      <div>
+        <h2 class="title-padrinos">NUESTROS PADRINOS</h2>
+        <p class="names-padrinos" style="font-size: 30px;">Nora Valadez<br>Y<br>Fernando Hurtado</p>
+      </div>
+    </div>
+  </section>
+
+    <section class="page page_lugar">
+      <div class="page_misa">
+        <div class="seal_novios seal_lugar">
+          <img src="VECTOR13.png" alt="Icono misa" />
+        </div>
+        <h2 class="titulo_lugar">MISA</h2>
+        <p>Ramón Barreto de Tábora s/n, Esq. Andrés López Col.<br/>Col. La Moderna, Irapuato, Gto.</p>
+      </div>
+      <div class="page_misa">
+        <div class="seal_novios seal_novios_boda">
+          <img src="VECTOR5.png" alt="Icono novios" />
+        </div>
+      </div>
+      <div class="page_misa">
+        <div class="seal_novios seal_lugar">
+          <img src="VECTOR14.png" alt="Icono fiesta" />
+        </div>
+        <h2 class="titulo_lugar">FIESTA</h2>
+        <p>Finca Capule<br/>Cam. a la Garrida x km</p>
+      </div>
+    </section>
+
+    <section class="page cierre">
+      <div class="novios_cierre">
+        <img src="NOVIOS.jpg" alt="Novios cierre" />
+        <div class="overlay">
+          <div class="rings">
+            <img src="VECTOR4.png" alt="Anillos" />
+          </div>
+          <p class="mensaje">
+            Deseamos tener el gusto de compartir<br/>
+            contigo nuestra bonita nueva etapa
+          </p>
+          <div class="call-container">
+            <img src="VECTOR3.png" alt="Corazón" />
+            <p class="call">¡Te esperamos!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
