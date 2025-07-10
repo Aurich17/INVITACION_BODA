@@ -33,6 +33,16 @@
   overflow: hidden;
 }
 
+.left{
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+}
+
+.right {
+  border-top-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+}
+
 .ribbon.horizontal {
   position: absolute;
   height: 10%;
@@ -233,28 +243,25 @@
 /* PADRES */
 .container_padres {
   display: flex;
-  flex-direction: row;
-  font-family: "Imperial Script", cursive;
-  font-size: 30px;
-  width: 65%;
-  margin: 0.5rem auto;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 1rem;             /* espacio horizontal general */
+  font-family: "Imperial Script", cursive;
 }
 .container_pareja {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;           /* espacio entre foto y barrita */
 }
+
 .container_pareja img {
   width: 85px;
 }
 .barrita {
-  width: 5px;
-  height: 90px;
+  width: 2px;            /* más delgado */
+  height: 70px;          /* ajusta para alinearse con fotos */
   background-color: #968713;
 }
-
 /* PADRINOS */
 .padrinos_page {
   display: flex;
@@ -311,6 +318,24 @@
   display: block;
 }
 
+.container_nombres_padres {
+  font-family: "Imperial Script", cursive;
+  font-size: 80px;
+  line-height: 1.2; /* para que el <img> quede centrado verticalmente */
+}
+
+
+.mother-name {
+  display: inline-flex;
+  align-items: center;
+}
+
+.mother-icon {
+  width: 20px;       /* 0.8 veces el tamaño de la fuente */
+  height: auto;
+  margin-left: 2px; /* un pequeño espacio desde el nombre */
+  vertical-align: middle;
+}
 
 .container_nombres .padrinos {
   font-family: "Imperial Script", cursive;
@@ -370,92 +395,94 @@
   line-height: 1.3;
 }
 
-/* CIERRE */
 .page.cierre {
   position: relative;
   height: 100vh;
   overflow: hidden;
 }
+
 .novios_cierre {
   position: relative;
   width: 100%;
   height: 100%;
 }
-.novios_cierre img {
-  display: block;
+
+/* foto de fondo */
+.bg-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-/* overlay con degradado */
-.overlay {
+
+/* trapezoide dorado */
+.overlay-triangle {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50%;  /* cubre sólo la mitad inferior */
-  /* degradado de esquina inferior izquierda hacia centro-arriba derecha */
+  height: 70%;     /* un poco más bajo que antes */
   background: linear-gradient(
     to top right,
-    rgba(150,135,19,1)   0%,   /* dorado sólido abajo-izquierda */
-    rgba(150,135,19,0.8) 30%,
-    rgba(150,135,19,0.4) 60%,
-    rgba(150,135,19,0)   100%  /* transparente arriba-derecha */
+    rgba(150,135,19,1)   0%,
+    rgba(150,135,19,0.9) 25%,
+    rgba(150,135,19,0.7) 50%,
+    rgba(150,135,19,0.4) 75%,
+    rgba(150,135,19,0)   100%
   );
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1rem 1rem;
-  box-sizing: border-box;
+  /* trapezoide con base abajo y lado derecho más alto que el izquierdo */
+  clip-path: polygon(0% 100%, 100% 100%, 100% 30%, 0% 60%);
   z-index: 1;
-  clip-path: none; /* eliminamos cualquier recorte rígido */
 }
 
-/* icono de anillos */
-.rings img {
-  width: 90px;        /* ligeramente más pequeño para que no sobresalga */
-  height: auto;
-  margin-bottom: 1rem;
+/* Anillos en la esquina superior derecha del trapezoide */
+.overlay-triangle .rings {
+  position: absolute;
+  top: 12px;    /* a 12px del tope del trapezoide */
+  right: 12px;  /* a 12px del borde derecho */
+}
+.overlay-triangle .rings img {
+  width: 70px;  /* un poco más pequeño para que no “rompa” */
 }
 
-/* mensaje centrado */
-.overlay .mensaje {
-  margin: 0 auto 1.5rem;  /* espacio extra abajo */
+/* Mensaje centrado, ocupa ~80% de ancho para 3 líneas */
+.overlay-triangle .mensaje {
+  position: absolute;
+  bottom: 50px;     /* justo encima de “¡Te esperamos!” */
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 80%;   /* ocupa el 80% del width -> 3 líneas */
+  margin: 0;
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
-  text-align: center;
-  color: #000;
   line-height: 1.4;
-  max-width: 220px;
+  color: #000;
+  text-align: center;
+  z-index: 2;
 }
-.overlay .call {
-  margin-top: 0.5rem;
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.5rem;
-  color: black;
-}
-/* contenedor “¡Te esperamos!” */
+
+/* “¡Te esperamos!” un poco más arriba */
 .call-container {
+  position: absolute;
+  bottom: 40px;     /* sube desde 16px hasta 40px */
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: auto;       /* empuja al final */
+  z-index: 2;
 }
-
-/* corazón */
 .call-container img {
   width: 24px;
   height: auto;
 }
-
-/* texto “¡Te esperamos!” */
-.call {
+.call-container .call {
   font-family: 'Great Vibes', cursive;
   font-size: 1.6rem;
   margin: 0;
   color: #000;
 }
-
 /* ANIMACIONES */
 @keyframes slideLeft  { to { transform: translateX(-100%); } }
 @keyframes slideRight { to { transform: translateX(100%); } }
