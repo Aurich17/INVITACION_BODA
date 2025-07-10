@@ -8,14 +8,16 @@
 
 .container_general {
   position: relative;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;    /* hasta 500px de ancho */
+  min-width: 300px;    /* no menor a 300px */
   min-height: 95vh;
   background: #f1f1f1;
   overflow: hidden;
   margin: 0 auto;
 }
 
-/* PORTADA */
+/* ===== PORTADA ===== */
 .cover {
   position: absolute;
   inset: 0;
@@ -32,13 +34,11 @@
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
-
-.left{
+.panel.left {
   border-top-right-radius: 13px;
   border-bottom-right-radius: 13px;
 }
-
-.right {
+.panel.right {
   border-top-left-radius: 13px;
   border-bottom-left-radius: 13px;
 }
@@ -53,14 +53,6 @@
   z-index: 15;
 }
 
-.ribbon.horizontal.half-left {
-  left: -50%;
-}
-
-.ribbon.horizontal.half-right {
-  left: -50%;
-}
-
 .seal {
   position: absolute;
   left: 50%;
@@ -69,88 +61,56 @@
   z-index: 20;
   animation: bounce 1.5s ease-in-out infinite;
 }
-
 .seal img {
-  width: 350px;
+  width: 150px;
   height: auto;
 }
 
-/* ESTADO ABIERTO DE LA PORTADA */
+/* animación apertura */
 .cover.open .seal {
   animation: none;
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
 }
-
 .cover.open .panel.left {
   animation: slideLeft 1s ease-in-out forwards;
 }
-
 .cover.open .panel.left .ribbon {
   animation: slideLeft 1s ease-in-out forwards;
 }
-
 .cover.open .panel.right {
   animation: slideRight 1s ease-in-out forwards;
 }
-
 .cover.open .panel.right .ribbon {
   animation: slideRight 1s ease-in-out forwards;
 }
 
-/* BORDES */
+/* bordes */
 .border {
   position: absolute;
   background: #968713;
   opacity: 0;
   z-index: 2;
 }
+.border.top    { top: 15px;  left: 2px;    height: 2px; width: 0; }
+.border.right  { top: 2px;   right: 15px;  width: 2px; height: 0; }
+.border.bottom { bottom: 15px; left: 2px;  height: 2px; width: 0; }
+.border.left   { top: 2px;   left: 15px;   width: 2px; height: 0; }
 
-.border.top {
-  top: 15px;
-  left: 2px;
-  height: 2px;
-  width: 0;
-}
-
-.border.right {
-  top: 2px;
-  right: 15px;
-  width: 2px;
-  height: 0;
-}
-
-.border.bottom {
-  bottom: 15px;
-  left: 2px;
-  height: 2px;
-  width: 0;
-}
-
-.border.left {
-  top: 2px;
-  left: 15px;
-  width: 2px;
-  height: 0;
-}
-
-.cover.open~.border.top {
+.cover.open ~ .border.top {
   animation: drawTop 0.4s ease-in-out forwards;
 }
-
-.cover.open~.border.right {
+.cover.open ~ .border.right {
   animation: drawRight 0.4s ease-in-out 0.4s forwards;
 }
-
-.cover.open~.border.bottom {
+.cover.open ~ .border.bottom {
   animation: drawBottom 0.4s ease-in-out 0.8s forwards;
 }
-
-.cover.open~.border.left {
+.cover.open ~ .border.left {
   animation: drawLeft 0.4s ease-in-out 1.2s forwards;
 }
 
-/* CONTENIDO DE LA INVITACIÓN */
+/* ===== CONTENIDO ===== */
 .invitation-content {
   position: absolute;
   inset: 0;
@@ -160,100 +120,78 @@
   scrollbar-width: none;
   text-align: center;
 }
-
 .invitation-content::-webkit-scrollbar {
   display: none;
 }
 
+/* páginas */
 .page {
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0rem 1rem;
+  padding: 0 1rem;
   box-sizing: border-box;
   min-height: 100vh;
-  text-align: center;
   font-family: 'Playfair Display', serif;
+  text-align: center;
 }
-
 .page h1 {
-  display: inline-block;
   font-family: "Great Vibes", cursive;
   font-size: 1.8rem;
+  margin: 0.5rem 0;
 }
-
 .page h2 {
-  margin: 1rem 0 0.5rem;
   font-size: 1.5rem;
   color: #6D6000;
+  margin: 1rem 0 0.5rem;
 }
-
 .page p {
-  margin: 0.25rem 0;
   font-size: 0.9rem;
   color: #333;
   line-height: 1.3;
+  margin: 0.25rem 0;
 }
 
+/* sello novios genérico */
 .seal_novios {
-  display: block;
-  margin: 1.3rem auto 0.2rem auto;
-  /* max-width: 80%; */
+  margin: 1rem auto 0.2rem;
   width: 100%;
 }
-
 .seal_novios img {
   width: 120px;
 }
-/* ISMA NUEVO */
+
+/* sello combinado */
 .seal_novios_inicio {
   position: relative;
-  width: 120px;        /* ancho fijo para el stack */
-  height: 120px;       /* lo mismo que el alto de tus imágenes */
+  width: 120px;
+  height: 120px;
   margin: 1rem auto;
 }
-
-/* Estilos base para ambas imágenes */
 .seal_novios_inicio img {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0; left: 0;
   width: 120px;
-  height: auto;
 }
-
-/* La imagen de fondo (sello) */
 .seal_novios_inicio .sello {
   z-index: 1;
 }
-
-/* El arco encima */
 .seal_novios_inicio .arco {
   z-index: 2;
-  /* si quieres desplazar un poco el arco: */
-  /* top: -10px;  left: 10px; */
-}
-/* ISMA NUEVO FIN */
-
-.seal_novios.seal_lugar {
-  margin: 0;
-  width: 100%;
 }
 
+/* hero background */
 .page .novios {
   position: absolute;
   inset: 0;
 }
-
 .page .novios img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   filter: brightness(0.6);
 }
-
 .imagen-zoom {
   position: absolute;
   top: 50%;
@@ -261,6 +199,7 @@
   transform: translate(-50%, -20%) scale(1.7);
 }
 
+/* hero text */
 .hero-text {
   position: absolute;
   inset: 0;
@@ -268,177 +207,113 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   pointer-events: none;
   z-index: 1;
 }
-
 .hero-text h2 {
-  margin: 0.5rem;
   font-family: "Castoro Titling", serif;
-  font-size: 60px;
+  font-size: 3rem;
   color: white;
-  font-weight: 100;
-  line-height: 1;
+  margin: 0.2em 0;
 }
-
 .hero-text .couple {
-  margin: 0.2em 0;
   font-family: "Great Vibes", cursive;
-  font-size: 53px;
+  font-size: 2.5rem;
   color: white;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-.hero-text .date {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   margin: 0.2em 0;
+}
+.hero-text .date {
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
   color: white;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  margin: 0.2em 0;
 }
 
-/* PADRES */
+/* padres */
 .container_padres {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;             /* espacio horizontal general */
+  gap: 1rem;
   font-family: "Imperial Script", cursive;
 }
-
 .container_pareja {
   display: flex;
   align-items: center;
-  gap: 0.5rem;           /* espacio entre foto y barrita */
+  gap: 0.5rem;
 }
-
-
 .container_pareja img {
   width: 85px;
 }
-
 .barrita {
-  width: 2px;            /* más delgado */
-  height: 70px;          /* ajusta para alinearse con fotos */
+  width: 2px;
+  height: 70px;
   background-color: #968713;
 }
-/* PADRINOS */
+
+/* padrinos */
 .padrinos_page {
   display: flex;
   align-items: center;
-  /* centra vertical */
   justify-content: center;
-  /* centra horizontal */
   padding: 2rem 1rem;
-  /* algo de aire */
-  box-sizing: border-box;
-  /* mismo fondo blanco limpio */
 }
-
 .padrinos-inner {
-  text-align: center;
   max-width: 300px;
-  /* controla ancho del bloque */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   gap: 55px;
+  text-align: center;
 }
-
-.icon-cruz {
-  /* background-color: green; */
-  height: 150px;
-  margin-bottom: 30px;
-}
-
-/* 3) Icono de cruz */
 .icon-cruz img {
   width: 80%;
-  /* ajusta al modelo (era ~80px) */
-  display: block;
   margin: 0 auto 1rem;
-  /* separa del título */
 }
-
-/* 4) Título “NUESTROS PADRINOS” */
 .title-padrinos {
   font-family: 'Castoro Titling', serif;
-  /* misma que usas en secciones */
   font-size: 1.25rem;
-  /* aprox 20px */
   font-weight: 500;
   color: #6D6000;
-  /* dorado */
   letter-spacing: 2px;
-  /* para un aire más elegante */
-  margin: 0 0 0.75rem;
-  /* espacio abajo */
   text-transform: uppercase;
+  margin-bottom: 0.75rem;
 }
-
-/* 5) Nombres */
 .names-padrinos {
   font-family: 'Imperial Script', cursive;
   font-size: 3.1rem;
-  /* aprox 18px */
   line-height: 1.4;
-  color: #333;
   margin: 0;
 }
-
-/* 6) Separador “Y” */
-.names-padrinos br:nth-of-type(1) {
-  content: '';
-  margin: 0.5rem 0;
+.names-padrinos br {
   display: block;
+  margin: 0.5rem 0;
 }
-
 .container_nombres_padres {
   font-family: "Imperial Script", cursive;
-  font-size: 80px;
-  line-height: 1.2; /* para que el <img> quede centrado verticalmente */
+  font-size: 3rem;
+  line-height: 1.2;
 }
-
-
 .mother-name {
   display: inline-flex;
   align-items: center;
 }
-
 .mother-icon {
-  width: 20px;       /* 0.8 veces el tamaño de la fuente */
-  height: auto;
-  margin-left: 2px; /* un pequeño espacio desde el nombre */
-  vertical-align: middle;
+  width: 0.8em;
+  margin-left: 0.3em;
 }
 
-.container_nombres .padrinos {
-  font-family: "Imperial Script", cursive;
-  font-size: 30px;
-}
-
-.seal_cruz {
-  margin-top: 20px;
-  padding-top: 40px;
-}
-
-/* LUGAR */
+/* lugar */
 .page.page_lugar {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 2rem 1rem;
-  box-sizing: border-box;
   height: 100vh;
 }
-
-.page_misa {
-  width: 80%;
-}
-
 .page.page_lugar .page_misa {
   flex: 1;
   display: flex;
@@ -446,66 +321,39 @@
   align-items: center;
   gap: 1rem;
   padding: 0 0.5rem;
-  box-sizing: border-box;
   text-align: center;
   height: 40px;
+  width: 80%;
 }
-
-.page.page_lugar .seal_lugar img {
-  width: 70px;
-  height: auto;
-}
-
-.imagenMisa {
-  width: 90px !important;
-  height: auto;
-}
-
-.seal_novios_boda {
-  margin: 0 auto 50px;
-  display: flex;
-  align-items: center;
-}
-
+.page.page_lugar .seal_lugar img,
 .seal_novios_boda img {
-  padding-top: 30px;
-  width: 48%;
-  margin: 0 auto;
+  width: 70px;
 }
-
 .page.page_lugar .titulo_lugar {
-  margin: 0;
   font-family: "Castoro Titling", serif;
   font-size: 2rem;
   color: #6D6000;
   line-height: 1;
   font-weight: 100;
 }
-
 .page.page_lugar .page_misa p {
-  /* margin: 10px; */
-  /* font-family: inherit; */
+  font-family: "Source Sans 3", sans-serif;
   font-size: 20px;
   color: #333;
   line-height: 1.3;
-  font-weight: 100px;
-  font-family: "Source Sans 3", sans-serif;
 }
 
+/* cierre */
 .page.cierre {
   position: relative;
   height: 100vh;
   overflow: hidden;
 }
-
-
 .novios_cierre {
   position: relative;
   width: 100%;
   height: 100%;
 }
-
-/* foto de fondo */
 .bg-img {
   position: absolute;
   inset: 0;
@@ -520,80 +368,56 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 70%;     /* un poco más bajo que antes */
+  height: 70%;
   background: linear-gradient(
     to top right,
-    rgba(150,135,19,1)   0%,
+    rgba(150,135,19,1) 0%,
     rgba(150,135,19,0.9) 25%,
     rgba(150,135,19,0.7) 50%,
     rgba(150,135,19,0.4) 75%,
-    rgba(150,135,19,0)   100%
+    rgba(150,135,19,0) 100%
   );
-  /* trapezoide con base abajo y lado derecho más alto que el izquierdo */
   clip-path: polygon(0% 100%, 100% 100%, 100% 30%, 0% 60%);
   z-index: 1;
-  clip-path: none;
-  /* eliminamos cualquier recorte rígido */
 }
 
-/* icono de anillos */
-.rings img {
-  width: 90px;
-  /* ligeramente más pequeño para que no sobresalga */
-  height: auto;
-  margin-bottom: 1rem;
-}
-
-/* Anillos en la esquina superior derecha del trapezoide */
+/* anillos */
 .overlay-triangle .rings {
   position: absolute;
-  top: 12px;    /* a 12px del tope del trapezoide */
-  right: 12px;  /* a 12px del borde derecho */
+  top: 12px;
+  right: 12px;
+  z-index: 2;
 }
 .overlay-triangle .rings img {
-  width: 70px;  /* un poco más pequeño para que no “rompa” */
+  width: 70px;
+  height: auto;
 }
 
-/* mensaje centrado */
-.overlay .mensaje {
-  margin: 0 auto 1.5rem;
-  /* espacio extra abajo */
-/* Mensaje centrado, ocupa ~80% de ancho para 3 líneas */
+/* mensaje */
 .overlay-triangle .mensaje {
   position: absolute;
-  bottom: 50px;     /* justo encima de “¡Te esperamos!” */
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 80%;   /* ocupa el 80% del width -> 3 líneas */
-  margin: 0;
+  max-width: 80%;
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
-  line-height: 1.4;
+  line-height: 1.6;
   color: #000;
   text-align: center;
+  margin: 0;
   z-index: 2;
 }
 
-.overlay .call {
-  margin-top: 0.5rem;
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.5rem;
-  color: black;
-}
-
-/* contenedor “¡Te esperamos!” */
-
-/* “¡Te esperamos!” un poco más arriba */
+/* llamada final */
 .call-container {
   position: absolute;
-  bottom: 40px;     /* sube desde 16px hasta 40px */
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: auto;
-  /* empuja al final */
   z-index: 2;
 }
 .call-container img {
@@ -606,147 +430,62 @@
   margin: 0;
   color: #000;
 }
-/* ANIMACIONES */
-@keyframes slideLeft {
-  to {
-    transform: translateX(-100%);
-  }
-}
 
-@keyframes slideRight {
-  to {
-    transform: translateX(100%);
-  }
-}
-
+/* animaciones */
+@keyframes slideLeft { to { transform: translateX(-100%); } }
+@keyframes slideRight { to { transform: translateX(100%); } }
 @keyframes bounce {
-
-  0%,
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  50% {
-    transform: translate(-50%, -45%) scale(1.1);
-  }
+  0%,100% { transform: translate(-50%,-50%) scale(1); }
+  50%     { transform: translate(-50%,-45%) scale(1.1); }
 }
+@keyframes drawTop    { to { width: calc(100% - 4px); opacity:1; } }
+@keyframes drawRight  { to { height: calc(100% - 4px); opacity:1; } }
+@keyframes drawBottom { to { width: calc(100% - 4px); opacity:1; } }
+@keyframes drawLeft   { to { height: calc(100% - 4px); opacity:1; } }
 
-@keyframes drawTop {
-  to {
-    width: calc(100% - 4px);
-    opacity: 1;
-  }
-}
+/* cierre animaciones */
+@keyframes slideLeftClose  { 0%{transform:translateX(-100%);} 100%{transform:translateX(0);} }
+@keyframes slideRightClose { 0%{transform:translateX(100%);} 100%{transform:translateX(0);} }
 
-@keyframes drawRight {
-  to {
-    height: calc(100% - 4px);
-    opacity: 1;
-  }
-}
-
-@keyframes drawBottom {
-  to {
-    width: calc(100% - 4px);
-    opacity: 1;
-  }
-}
-
-@keyframes drawLeft {
-  to {
-    height: calc(100% - 4px);
-    opacity: 1;
-  }
-}
-
-
-/* animaciones inversas */
-/* ==== ANIMACIONES INVERSAS CORRECTAS ==== */
-/* Panel izquierdo: de -100% → 0 */
-@keyframes slideLeftClose {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-/* Panel derecho: de +100% → 0 */
-@keyframes slideRightClose {
-  0% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-/* Cierre de tapa */
 .cover.closing {
-  /* sigue cubriendo todo */
   z-index: 20;
 }
-
-/* Paneles vuelven sobre el contenido */
 .cover.closing .panel.left {
   animation: slideLeftClose 1s ease-in-out forwards;
 }
-
 .cover.closing .panel.right {
   animation: slideRightClose 1s ease-in-out forwards;
 }
-
-/* Las ribbons acompañan al panel */
 .cover.closing .panel.left .ribbon {
   animation: slideLeftClose 1s ease-in-out forwards;
 }
-
 .cover.closing .panel.right .ribbon {
   animation: slideRightClose 1s ease-in-out forwards;
 }
-
-/* Bordes: se desdibujan en el mismo timing inverso */
-.cover.closing~.border.top {
-  animation: drawTop 0.4s ease-in-out reverse forwards;
+.cover.closing ~ .border.top {
+  animation: drawTop    0.4s ease-in-out reverse forwards;
 }
-
-.cover.closing~.border.right {
-  animation: drawRight 0.4s ease-in-out reverse 0.4s forwards;
+.cover.closing ~ .border.right {
+  animation: drawRight  0.4s ease-in-out reverse 0.4s forwards;
 }
-
-.cover.closing~.border.bottom {
+.cover.closing ~ .border.bottom {
   animation: drawBottom 0.4s ease-in-out reverse 0.8s forwards;
 }
-
-.cover.closing~.border.left {
-  animation: drawLeft 0.4s ease-in-out reverse 1.2s forwards;
+.cover.closing ~ .border.left {
+  animation: drawLeft   0.4s ease-in-out reverse 1.2s forwards;
 }
-
-/* Sello reaparece suavemente al final */
-@keyframes sealFadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
 .cover.closing .seal {
   animation: sealFadeIn 0.5s ease-out 1s forwards;
 }
+@keyframes sealFadeIn {
+  from { opacity: 0; transform: translate(-50%,-50%) scale(0.8); }
+  to   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+}
 
-/* RESPONSIVE */
+/* responsive */
 @media (max-width: 600px) {
   .container_general {
     width: 100%;
     height: 100%;
   }
-}
 }
