@@ -99,6 +99,18 @@
 
         <!-- triángulo dorado -->
         <div class="overlay-triangle">
+          <svg viewBox="0 0 100 60" preserveAspectRatio="none" class="svg-shape">
+            <defs>
+              <filter id="blur" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" />
+              </filter>
+            </defs>
+            <path d="M 0 60
+         Q 35 20, 60 10
+         L 100 0
+         L 100 60
+         Z" fill="#968713" filter="url(#blur)" />
+          </svg>
           <!-- Anillos en la esquina superior -->
           <div class="rings">
             <img src="VECTOR4.png" alt="Anillos" />
@@ -106,7 +118,7 @@
 
           <!-- Mensaje centrado en el trapezoide -->
           <p class="mensaje" style=" width: 80%; margin-bottom: 40px;">
-            Deseamos tener el gusto de compartir<br />
+            Deseamos tener el gusto de compartir
             contigo nuestra bonita nueva etapa
           </p>
         </div>
@@ -116,6 +128,11 @@
           <img src="VECTOR3.png" alt="Corazón" />
           <p class="call" style=" width: 80%;">¡Te esperamos!</p>
         </div>
+        <div class="call-container" style=" width: 80%; margin-bottom: 10px;">
+          <img src="VECTOR3.png" alt="Corazón" />
+          <p class="call" style=" width: 80%;">¡Te esperamos!</p>
+        </div>
+        <div class="lineadifuminada"></div>
       </div>
     </section>
   </div>
