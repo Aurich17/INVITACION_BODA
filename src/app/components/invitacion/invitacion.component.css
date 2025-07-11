@@ -8,7 +8,7 @@
 
 .container_general {
   position: relative;
-  width: 300px;
+  width: 500px;
   min-height: 95vh;
   background: #f1f1f1;
   overflow: hidden;
@@ -33,16 +33,6 @@
   overflow: hidden;
 }
 
-.left{
-  border-top-right-radius: 13px;
-  border-bottom-right-radius: 13px;
-}
-
-.right {
-  border-top-left-radius: 13px;
-  border-bottom-left-radius: 13px;
-}
-
 .ribbon.horizontal {
   position: absolute;
   height: 10%;
@@ -52,8 +42,14 @@
   left: -50%;
   z-index: 15;
 }
-.ribbon.horizontal.half-left { left: -50%; }
-.ribbon.horizontal.half-right { left: -50%; }
+
+.ribbon.horizontal.half-left {
+  left: -50%;
+}
+
+.ribbon.horizontal.half-right {
+  left: -50%;
+}
 
 .seal {
   position: absolute;
@@ -63,8 +59,9 @@
   z-index: 20;
   animation: bounce 1.5s ease-in-out infinite;
 }
+
 .seal img {
-  width: 150px;
+  width: 350px;
   height: auto;
 }
 
@@ -78,6 +75,7 @@
 .cover.open .panel.left {
   animation: slideLeft 1s ease-in-out forwards;
 }
+
 .cover.open .panel.left .ribbon {
   animation: slideLeft 1s ease-in-out forwards;
 }
@@ -85,6 +83,7 @@
 .cover.open .panel.right {
   animation: slideRight 1s ease-in-out forwards;
 }
+
 .cover.open .panel.right .ribbon {
   animation: slideRight 1s ease-in-out forwards;
 }
@@ -96,22 +95,49 @@
   opacity: 0;
   z-index: 2;
 }
-.border.top    { top: 15px;  left: 2px;    height: 2px; width: 0; }
-.border.right  { top: 2px;   right: 15px;  width: 2px; height: 0; }
-.border.bottom { bottom:15px; left: 2px;   height: 2px; width: 0; }
-.border.left   { top: 2px;   left: 15px;   width: 2px; height: 0; }
 
-.cover.open ~ .border.top {
-  animation: drawTop    0.4s ease-in-out forwards;
+.border.top {
+  top: 15px;
+  left: 2px;
+  height: 2px;
+  width: 0;
 }
-.cover.open ~ .border.right {
-  animation: drawRight  0.4s ease-in-out 0.4s forwards;
+
+.border.right {
+  top: 2px;
+  right: 15px;
+  width: 2px;
+  height: 0;
 }
-.cover.open ~ .border.bottom {
+
+.border.bottom {
+  bottom: 15px;
+  left: 2px;
+  height: 2px;
+  width: 0;
+}
+
+.border.left {
+  top: 2px;
+  left: 15px;
+  width: 2px;
+  height: 0;
+}
+
+.cover.open~.border.top {
+  animation: drawTop 0.4s ease-in-out forwards;
+}
+
+.cover.open~.border.right {
+  animation: drawRight 0.4s ease-in-out 0.4s forwards;
+}
+
+.cover.open~.border.bottom {
   animation: drawBottom 0.4s ease-in-out 0.8s forwards;
 }
-.cover.open ~ .border.left {
-  animation: drawLeft   0.4s ease-in-out 1.2s forwards;
+
+.cover.open~.border.left {
+  animation: drawLeft 0.4s ease-in-out 1.2s forwards;
 }
 
 /* CONTENIDO DE LA INVITACIÓN */
@@ -124,6 +150,7 @@
   scrollbar-width: none;
   text-align: center;
 }
+
 .invitation-content::-webkit-scrollbar {
   display: none;
 }
@@ -143,7 +170,7 @@
 .page h1 {
   display: inline-block;
   font-family: "Great Vibes", cursive;
-  font-size: 1.8rem;
+  font-size: 45px
 }
 
 .page h2 {
@@ -158,55 +185,74 @@
   color: #333;
   line-height: 1.3;
 }
-
-.seal_novios {
-  display: block;
-  margin: 1rem auto;
-  max-width: 80%;
-}
-.seal_novios img {
-  width: 120px;
-}
-/* ISMA NUEVO */
 .seal_novios_inicio {
   position: relative;
-  width: 120px;        /* ancho fijo para el stack */
-  height: 120px;       /* lo mismo que el alto de tus imágenes */
-  margin: 1rem auto;
+  width: 60%;
+  height: 120px;
+  margin: 0 auto;
+  /* align-items: center; */
+  /* background-color: antikquewhite; */
 }
 
-/* Estilos base para ambas imágenes */
+.nombre_padres{
+  font-size: 35px !important;
+}
+
 .seal_novios_inicio img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 120px;
+  width: 200px;
   height: auto;
 }
 
-/* La imagen de fondo (sello) */
 .seal_novios_inicio .sello {
   z-index: 1;
 }
 
-/* El arco encima */
 .seal_novios_inicio .arco {
   z-index: 2;
-  /* si quieres desplazar un poco el arco: */
-  /* top: -10px;  left: 10px; */
+  /* si quieres ajustar posición: top: -10px; left: 10px; */
 }
-/* ISMA NUEVO FIN */
+
+
+
+/* SECCIÓN HERO */
+.seal_novios {
+  display: block;
+  margin: 1.3rem auto 0.2rem auto;
+  /* max-width: 80%; */
+  width: 100%;
+}
+
+.seal_novios img {
+  width: 120px;
+}
+
+.seal_novios.seal_lugar {
+  margin: 0;
+  width: 100%;
+}
 
 .page .novios {
   position: absolute;
   inset: 0;
 }
+
 .page .novios img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: brightness(0.6);
 }
+
+/* .imagen-zoom {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -20%) scale(1.7);
+} */
 
 .hero-text {
   position: absolute;
@@ -219,25 +265,30 @@
   pointer-events: none;
   z-index: 1;
 }
+
 .hero-text h2 {
-  margin: 0.2em 0;
+  margin: 0.5rem;
   font-family: "Castoro Titling", serif;
-  font-size: 3rem;
+  font-size: 60px;
   color: white;
+  font-weight: 100;
+  line-height: 1;
 }
+
 .hero-text .couple {
   margin: 0.2em 0;
   font-family: "Great Vibes", cursive;
-  font-size: 2.5rem;
+  font-size: 53px;
   color: white;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
+
 .hero-text .date {
   margin: 0.2em 0;
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
   color: white;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* PADRES */
@@ -245,67 +296,110 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;             /* espacio horizontal general */
+  /* gap: 1rem; */
+  height: 150px;
+  width: 80%;
+  /* background-color: orange; */
   font-family: "Imperial Script", cursive;
 }
+
 .container_pareja {
   display: flex;
   align-items: center;
-  gap: 0.5rem;           /* espacio entre foto y barrita */
+  gap: 0.5rem;
 }
 
 .container_pareja img {
   width: 85px;
 }
+
 .barrita {
-  width: 2px;            /* más delgado */
-  height: 70px;          /* ajusta para alinearse con fotos */
+  width: 2px;
+  height: 70px;
   background-color: #968713;
 }
+
+.container_nombres_padres {
+  font-family: "Imperial Script", cursive;
+  line-height: 1.2; /* para centrar el icono en línea */
+}
+
+.container_nombres_padres p{
+  font-size: 35px;
+}
+
+.mother-name {
+  display: inline-flex;
+  align-items: center;
+}
+
+.mother-icon {
+  width: 40px;
+  height: auto;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
 /* PADRINOS */
 .padrinos_page {
   display: flex;
-  align-items: center;           /* centra vertical */
-  justify-content: center;       /* centra horizontal */
-  padding: 2rem 1rem;            /* algo de aire */
-  box-sizing: border-box;            /* mismo fondo blanco limpio */
+  align-items: center;
+  /* centra vertical */
+  justify-content: center;
+  /* centra horizontal */
+  padding: 2rem 1rem;
+  /* algo de aire */
+  box-sizing: border-box;
+  /* mismo fondo blanco limpio */
 }
+
 .padrinos-inner {
   text-align: center;
-  max-width: 240px;              /* controla ancho del bloque */
+  max-width: 300px;
+  /* controla ancho del bloque */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  gap: 55px;
 }
 
-.icon-cruz{
+.icon-cruz {
   /* background-color: green; */
   height: 150px;
   margin-bottom: 30px;
 }
+
 /* 3) Icono de cruz */
 .icon-cruz img {
-  width: 80%;                   /* ajusta al modelo (era ~80px) */
+  width: 80%;
+  /* ajusta al modelo (era ~80px) */
   display: block;
-  margin: 0 auto 1rem;           /* separa del título */
+  margin: 0 auto 1rem;
+  /* separa del título */
 }
 
 /* 4) Título “NUESTROS PADRINOS” */
 .title-padrinos {
-  font-family: 'Castoro Titling', serif;  /* misma que usas en secciones */
-  font-size: 1.25rem;              /* aprox 20px */
+  font-family: 'Castoro Titling', serif;
+  /* misma que usas en secciones */
+  font-size: 1.25rem;
+  /* aprox 20px */
   font-weight: 500;
-  color: #6D6000;                  /* dorado */
-  letter-spacing: 2px;             /* para un aire más elegante */
-  margin: 0 0 0.75rem;             /* espacio abajo */
+  color: #6D6000;
+  /* dorado */
+  letter-spacing: 2px;
+  /* para un aire más elegante */
+  margin: 0 0 0.75rem;
+  /* espacio abajo */
   text-transform: uppercase;
 }
 
 /* 5) Nombres */
 .names-padrinos {
   font-family: 'Imperial Script', cursive;
-  font-size: 3.1rem;               /* aprox 18px */
+  font-size: 3.1rem;
+  /* aprox 18px */
   line-height: 1.4;
   color: #333;
   margin: 0;
@@ -318,29 +412,12 @@
   display: block;
 }
 
-.container_nombres_padres {
-  font-family: "Imperial Script", cursive;
-  font-size: 80px;
-  line-height: 1.2; /* para que el <img> quede centrado verticalmente */
-}
-
-
-.mother-name {
-  display: inline-flex;
-  align-items: center;
-}
-
-.mother-icon {
-  width: 20px;       /* 0.8 veces el tamaño de la fuente */
-  height: auto;
-  margin-left: 2px; /* un pequeño espacio desde el nombre */
-  vertical-align: middle;
-}
 
 .container_nombres .padrinos {
   font-family: "Imperial Script", cursive;
   font-size: 30px;
 }
+
 .seal_cruz {
   margin-top: 20px;
   padding-top: 40px;
@@ -350,51 +427,73 @@
 .page.page_lugar {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   padding: 2rem 1rem;
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
+  justify-content: center;
 }
+
+.page_misa {
+  width: 80%;
+  max-height: max-content;
+}
+
 .page.page_lugar .page_misa {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0 0.5rem;
+  gap: 1rem;
+  padding: 0.5rem;
   box-sizing: border-box;
   text-align: center;
-  height: 50px;
+  /* height: 40px; */
 }
+
 .page.page_lugar .seal_lugar img {
-  width: 50px;
+  width: 70px;
   height: auto;
 }
+
+.imagenMisa {
+  width: 90px !important;
+  height: auto;
+}
+
 .seal_novios_boda {
-  margin: 0 auto 20px;
+  margin: 0 auto 50px;
   display: flex;
   align-items: center;
 }
+
 .seal_novios_boda img {
   padding-top: 30px;
-  width: 80px;
+  width: 48%;
   margin: 0 auto;
 }
+
 .page.page_lugar .titulo_lugar {
   margin: 0;
   font-family: "Castoro Titling", serif;
-  font-size: 1.25rem;
+  font-size: 2rem;
   color: #6D6000;
-}
-.page.page_lugar .page_misa p {
-  margin: 0;
-  font-family: inherit;
-  font-size: 0.9rem;
-  color: #333;
-  line-height: 1.3;
+  line-height: 1;
+  font-weight: 100;
 }
 
+.page.page_lugar .page_misa p {
+  /* margin: 10px; */
+  /* font-family: inherit; */
+  font-size: 20px;
+  color: #333;
+  line-height: 1.3;
+  font-weight: 100px;
+  font-family: "Source Sans 3", sans-serif;
+}
+
+/* CIERRE */
 .page.cierre {
   position: relative;
   height: 100vh;
@@ -402,111 +501,238 @@
 }
 
 .novios_cierre {
-  position: relative;
+  position: absolute;
   width: 100%;
   height: 100%;
 }
 
-/* foto de fondo */
 .bg-img {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-53%, -37%) scale(1.7);
 }
 
-/* trapezoide dorado */
 .overlay-triangle {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 70%;     /* un poco más bajo que antes */
-  background: linear-gradient(
-    to top right,
-    rgba(150,135,19,1)   0%,
-    rgba(150,135,19,0.9) 25%,
-    rgba(150,135,19,0.7) 50%,
-    rgba(150,135,19,0.4) 75%,
-    rgba(150,135,19,0)   100%
-  );
-  /* trapezoide con base abajo y lado derecho más alto que el izquierdo */
-  clip-path: polygon(0% 100%, 100% 100%, 100% 30%, 0% 60%);
+  height: 58%;
+  /* background: linear-gradient(to top right,
+      rgba(150, 135, 19, 1) 0%,
+      rgba(150, 135, 19, 0.9) 25%,
+      rgba(150, 135, 19, 0.7) 50%,
+      rgba(150, 135, 19, 0.4) 75%,
+      rgba(150, 135, 19, 0) 100%);
+  clip-path: path('M 0 100 C 0 100, 20 90, 50 60 L 100 30 L 100 100 Z'); */
+
   z-index: 1;
 }
 
-/* Anillos en la esquina superior derecha del trapezoide */
-.overlay-triangle .rings {
+.svg-shape {
   position: absolute;
-  top: 12px;    /* a 12px del tope del trapezoide */
-  right: 12px;  /* a 12px del borde derecho */
-}
-.overlay-triangle .rings img {
-  width: 70px;  /* un poco más pequeño para que no “rompa” */
+  bottom: 0;
+  left: 0;
+  width: 170%;
+  height: 70%;
+  z-index: -1;
+  /* transform: scale(4); */
+  left: -70%; /* centramos al usar width más grande */
+  transform: scale(1.3);
+  top: 35%;
 }
 
-/* Mensaje centrado, ocupa ~80% de ancho para 3 líneas */
+.overlay-triangle .rings {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.overlay-triangle .rings img {
+  width: 70px;
+}
+
 .overlay-triangle .mensaje {
   position: absolute;
-  bottom: 50px;     /* justo encima de “¡Te esperamos!” */
+  bottom: 15%;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 80%;   /* ocupa el 80% del width -> 3 líneas */
+  max-width: 80%;
   margin: 0;
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
+  font-family: 'Source Sans 3', serif;
+  font-size: 24px;
   line-height: 1.4;
   color: #000;
   text-align: center;
   z-index: 2;
 }
 
-/* “¡Te esperamos!” un poco más arriba */
+.novios_cierre img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4);
+}
+
+/* overlay con degradado */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  /* cubre sólo la mitad inferior */
+  /* degradado de esquina inferior izquierda hacia centro-arriba derecha */
+  background: linear-gradient(to top right,
+      rgba(150, 135, 19, 1) 0%,
+      /* dorado sólido abajo-izquierda */
+      rgba(150, 135, 19, 0.8) 30%,
+      rgba(150, 135, 19, 0.4) 60%,
+      rgba(150, 135, 19, 0) 100%
+      /* transparente arriba-derecha */
+    );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 1rem;
+  box-sizing: border-box;
+  z-index: 1;
+  clip-path: none;
+  /* eliminamos cualquier recorte rígido */
+}
+
+/* icono de anillos */
+.rings img {
+  width: 90px;
+  /* ligeramente más pequeño para que no sobresalga */
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* mensaje centrado */
+.overlay .mensaje {
+  margin: 0 auto 1.5rem;
+  /* espacio extra abajo */
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  text-align: center;
+  color: #000;
+  line-height: 1.4;
+  max-width: 220px;
+}
+
+.overlay .call {
+  margin-top: 0.5rem;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+  color: black;
+}
+
+/* contenedor “¡Te esperamos!” */
 .call-container {
   position: absolute;
-  bottom: 40px;     /* sube desde 16px hasta 40px */
-  left: 50%;
+  bottom: 5%;
+  left: 45%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 0.5rem;
   z-index: 2;
 }
+
+/* corazón */
 .call-container img {
-  width: 24px;
+  width: 15%;
   height: auto;
 }
+
+/* texto “¡Te esperamos!” */
 .call-container .call {
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.6rem;
-  margin: 0;
+  font-family: "Gwendolyn", cursive;
+  font-size: 2.3rem;
+  /* margin: 0; */
   color: #000;
+  line-height: 2px;
 }
+
 /* ANIMACIONES */
-@keyframes slideLeft  { to { transform: translateX(-100%); } }
-@keyframes slideRight { to { transform: translateX(100%); } }
-@keyframes bounce     {
-  0%,100% { transform: translate(-50%,-50%) scale(1); }
-  50%     { transform: translate(-50%,-45%) scale(1.1); }
+@keyframes slideLeft {
+  to {
+    transform: translateX(-100%);
+  }
 }
-@keyframes drawTop    { to { width: calc(100% - 4px); opacity:1; } }
-@keyframes drawRight  { to { height: calc(100% - 4px); opacity:1; } }
-@keyframes drawBottom { to { width: calc(100% - 4px); opacity:1; } }
-@keyframes drawLeft   { to { height: calc(100% - 4px); opacity:1; } }
+
+@keyframes slideRight {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -45%) scale(1.1);
+  }
+}
+
+@keyframes drawTop {
+  to {
+    width: calc(100% - 4px);
+    opacity: 1;
+  }
+}
+
+@keyframes drawRight {
+  to {
+    height: calc(100% - 4px);
+    opacity: 1;
+  }
+}
+
+@keyframes drawBottom {
+  to {
+    width: calc(100% - 4px);
+    opacity: 1;
+  }
+}
+
+@keyframes drawLeft {
+  to {
+    height: calc(100% - 4px);
+    opacity: 1;
+  }
+}
 
 
 /* animaciones inversas */
 /* ==== ANIMACIONES INVERSAS CORRECTAS ==== */
 /* Panel izquierdo: de -100% → 0 */
 @keyframes slideLeftClose {
-  0%   { transform: translateX(-100%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
+
 /* Panel derecho: de +100% → 0 */
 @keyframes slideRightClose {
-  0%   { transform: translateX(100%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /* Cierre de tapa */
@@ -519,6 +745,7 @@
 .cover.closing .panel.left {
   animation: slideLeftClose 1s ease-in-out forwards;
 }
+
 .cover.closing .panel.right {
   animation: slideRightClose 1s ease-in-out forwards;
 }
@@ -527,34 +754,100 @@
 .cover.closing .panel.left .ribbon {
   animation: slideLeftClose 1s ease-in-out forwards;
 }
+
 .cover.closing .panel.right .ribbon {
   animation: slideRightClose 1s ease-in-out forwards;
 }
 
 /* Bordes: se desdibujan en el mismo timing inverso */
-.cover.closing ~ .border.top {
-  animation: drawTop    0.4s ease-in-out reverse forwards;
+.cover.closing~.border.top {
+  animation: drawTop 0.4s ease-in-out reverse forwards;
 }
-.cover.closing ~ .border.right {
-  animation: drawRight  0.4s ease-in-out reverse 0.4s forwards;
+
+.cover.closing~.border.right {
+  animation: drawRight 0.4s ease-in-out reverse 0.4s forwards;
 }
-.cover.closing ~ .border.bottom {
+
+.cover.closing~.border.bottom {
   animation: drawBottom 0.4s ease-in-out reverse 0.8s forwards;
 }
-.cover.closing ~ .border.left {
-  animation: drawLeft   0.4s ease-in-out reverse 1.2s forwards;
+
+.cover.closing~.border.left {
+  animation: drawLeft 0.4s ease-in-out reverse 1.2s forwards;
 }
 
 /* Sello reaparece suavemente al final */
 @keyframes sealFadeIn {
-  from { opacity: 0; transform: translate(-50%,-50%) scale(0.8); }
-  to   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
+
 .cover.closing .seal {
   animation: sealFadeIn 0.5s ease-out 1s forwards;
 }
+
 /* RESPONSIVE */
 @media (max-width: 600px) {
-  /* (puedes añadir aquí ajustes para móviles) */
+  .container_general {
+    width: 100%;
+    height: 100%;
+  }
 }
 
+.lineadifuminada{
+  height: 0.5px;
+  width: 58%;
+  background-color: #000;
+  border-radius: 4px;
+  bottom: 6%;
+  left: 50%;
+  z-index: 3;
+  position: absolute;
+  transform: translate(-50%);
+  filter: blur(4px);
+}
+
+  /* @media (max-width: 1366px) {
+    .page.page_lugar {
+      padding: 0rem;
+      flex-direction: column;
+    }
+
+    .page.page_lugar .page_misa {
+      width: 100%;
+      padding: 0rem 0;
+      box-sizing: border-box;
+    }
+
+    .page.page_lugar .seal_lugar img,
+    .page.page_lugar .imagenMisa {
+      width: 60px ;
+      height: auto;
+    }
+
+    .page.page_lugar .seal_novios_boda img {
+      width: 50% ;
+      max-width: 100px;
+      margin: 0 auto 1rem;
+    }
+
+    .page.page_lugar .titulo_lugar {
+      font-size: 1.6rem;
+      margin-bottom: 0rem;
+    }
+
+
+    .page.page_lugar .page_misa p {
+      font-size: 0.9rem;
+      line-height: 1.3;
+      margin: 0 auto;
+      max-width: 90%;
+    }
+  } */

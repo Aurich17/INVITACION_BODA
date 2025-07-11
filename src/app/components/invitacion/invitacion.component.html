@@ -1,11 +1,6 @@
 <div class="container_general">
   <!-- portada clicable -->
-  <div
-    class="cover"
-    [class.open]="isOpen"
-     [class.closing]="isClosing"
-    (click)="onNextPage()"
-  >
+  <div class="cover" [class.open]="isOpen" [class.closing]="isClosing" (click)="onNextPage()">
     <div class="panel left">
       <div class="ribbon horizontal half-left"></div>
     </div>
@@ -27,10 +22,11 @@
   <div #invitationContent class="invitation-content">
     <section class="page hero">
       <img src="PALOMAS_BODA.png" alt="Fondo palomas" />
-      <div class="novios">
-        <img src="NOVIOS.jpg" alt="Novios" />
+      <div class="novios ">
+        <img src="NOVIOS.jpg" alt="Novios" class="imagen-zoom" />
         <div class="hero-text">
-          <h2>NUESTRA BODA</h2>
+          <h2>NUESTRA</h2>
+          <h2>BODA</h2>
           <p class="couple">Carolina &amp; Antonio</p>
           <p class="date">9 . 08 . 25</p>
         </div>
@@ -43,7 +39,9 @@
         <img src="ARCO.png" alt="Arco" class="arco" />
         <img src="IMAGEN.png" alt="Sello novios" class="sello" />
       </div>
-      <h2>NUESTROS PADRES</h2>
+      <div style="height: 100px;"></div>
+      <h2 class="nombre_padres">NUESTROS PADRES</h2>
+      <div style="height: 20px;"></div>
       <div class="container_padres">
         <div class="container_pareja">
           <img src="Novio.png" alt="Padre novio" />
@@ -77,25 +75,25 @@
       </div>
     </section>
 
-  <section class="page padrinos_page">
-    <div class="padrinos-inner">
-      <div class="icon-cruz">
-        <img src="CRUZ_PAREJA.png" alt="Cruz padrinos">
+    <section class="page padrinos_page">
+      <div class="padrinos-inner">
+        <div class="icon-cruz">
+          <img src="CRUZ_PAREJA.png" alt="Cruz padrinos">
+        </div>
+        <div>
+          <h2 class="title-padrinos">NUESTROS PADRINOS</h2>
+          <p class="names-padrinos" style="font-size: 30px;">Nora Valadez<br>Y<br>Fernando Hurtado</p>
+        </div>
       </div>
-      <div>
-        <h2 class="title-padrinos">NUESTROS PADRINOS</h2>
-        <p class="names-padrinos" style="font-size: 30px;">Nora Valadez<br>Y<br>Fernando Hurtado</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
     <section class="page page_lugar">
       <div class="page_misa">
         <div class="seal_novios seal_lugar">
-          <img src="VECTOR13.png" alt="Icono misa" />
+          <img src="VECTOR13.png" alt="Icono misa" class="imagenMisa" />
         </div>
         <h2 class="titulo_lugar">MISA</h2>
-        <p>Ramón Barreto de Tábora s/n, Esq. Andrés López Col.<br/>Col. La Moderna, Irapuato, Gto.</p>
+        <p>Ramón Barreto de Tábora s/n, Esq. Andrés López Col. La Moderna, Irapuato, Guanajuato 36690.</p>
       </div>
       <div class="page_misa">
         <div class="seal_novios seal_novios_boda">
@@ -104,37 +102,54 @@
       </div>
       <div class="page_misa">
         <div class="seal_novios seal_lugar">
-          <img src="VECTOR14.png" alt="Icono fiesta" />
+          <img src="VECTOR14.png" alt="Icono fiesta" class="imagenMisa" />
         </div>
         <h2 class="titulo_lugar">FIESTA</h2>
-        <p>Finca Capule<br/>Cam. a la Garrida x km</p>
+        <p>Finca Capule<br />Cam. a la Garrida km 0.5, 36500 <br /> Irapuato, Gto.</p>
       </div>
     </section>
 
-<section class="page cierre">
-  <div class="novios_cierre">
-    <img src="NOVIOS.jpg" alt="Novios cierre" class="bg-img"/>
+    <section class="page cierre">
+      <div class="novios_cierre">
+        <img src="NOVIOS.jpg" alt="Novios cierre" class="bg-img" />
 
-    <!-- triángulo dorado -->
-    <div class="overlay-triangle">
-      <!-- Anillos en la esquina superior -->
-      <div class="rings">
-        <img src="VECTOR4.png" alt="Anillos" />
+        <!-- triángulo dorado -->
+        <div class="overlay-triangle">
+          <svg viewBox="0 0 100 60" preserveAspectRatio="none" class="svg-shape">
+            <defs>
+              <filter id="blur" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" />
+              </filter>
+            </defs>
+            <path d="M 0 60
+         Q 35 20, 60 10
+         L 100 0
+         L 100 60
+         Z" fill="#968713" filter="url(#blur)" />
+          </svg>
+          <!-- Anillos en la esquina superior -->
+          <!-- <div class="rings">
+            <img src="VECTOR4.png" alt="Anillos" />
+          </div> -->
+
+          <!-- Mensaje centrado en el trapezoide -->
+          <p class="mensaje" style=" width: 80%; margin-bottom: 40px;">
+            Deseamos tener el gusto de compartir
+            contigo nuestra bonita nueva etapa
+          </p>
+        </div>
+
+        <!-- ¡Te esperamos! un poco más arriba -->
+        <div class="call-container" style=" width: 80%; margin-bottom: 10px;">
+          <img src="VECTOR3.png" alt="Corazón" />
+          <p class="call" style=" width: 80%;">¡Te esperamos!</p>
+        </div>
+        <div class="call-container" style=" width: 80%; margin-bottom: 10px;">
+          <img src="VECTOR3.png" alt="Corazón" />
+          <p class="call" style=" width: 80%;">¡Te esperamos!</p>
+        </div>
+        <div class="lineadifuminada"></div>
       </div>
-
-      <!-- Mensaje centrado en el trapezoide -->
-      <p class="mensaje" style=" width: 80%; margin-bottom: 40px;">
-        Deseamos tener el gusto de compartir<br/>
-        contigo nuestra bonita nueva etapa
-      </p>
-    </div>
-
-    <!-- ¡Te esperamos! un poco más arriba -->
-    <div class="call-container" style=" width: 80%; margin-bottom: 10px;">
-      <img src="VECTOR3.png" alt="Corazón" />
-      <p class="call" style=" width: 80%;">¡Te esperamos!</p>
-    </div>
-  </div>
-</section>
+    </section>
   </div>
 </div>
